@@ -3,6 +3,7 @@ runtime: ruby31
 build:
   commands:
     build:
+      - bundle config set --local force_ruby_platform true
       - bundle install
 run:
   runtime-version: 3.1.6

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0.0'
-gem 'concurrent-ruby', '1.3.4'
+gem 'nokogiri', '~> 1.18.6', platform: :ruby
+
