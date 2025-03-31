@@ -3,8 +3,8 @@ runtime: ruby31
 build:
   commands:
     pre-build:
-      - apt-get update
-      - apt-get install -y xz-utils
+      - yum update -y
+      - yum install -y xz
     build:
       - bundle config set --local force_ruby_platform true
       - bundle install
