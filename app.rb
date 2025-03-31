@@ -1,9 +1,5 @@
-require 'bundler/inline'
-
-gemfile do
-  source 'https://rubygems.org'
-  gem 'rails', '~> 7.0.0'
-end
+require 'bundler/setup'
+Bundler.require(:default)
 
 require 'rails'
 require 'action_controller/railtie'
@@ -12,6 +8,7 @@ class TestApp < Rails::Application
   config.root = __dir__
   config.consider_all_requests_local = true
   config.secret_key_base = 'secret'
+  config.eager_load = false
 
   routes.draw do
     get '/' => 'test#index'

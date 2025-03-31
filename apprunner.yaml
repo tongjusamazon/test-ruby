@@ -4,9 +4,9 @@ build:
   commands:
     pre-build:
       - yum update -y
-      - yum install -y xz
+      - yum install -y libxml2-devel libxslt-devel
     build:
-      - bundle config set --local force_ruby_platform true
+      - bundle config build.nokogiri --use-system-libraries
       - bundle install
 run:
   runtime-version: 3.1.6
