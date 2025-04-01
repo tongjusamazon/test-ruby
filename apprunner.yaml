@@ -4,12 +4,19 @@ build:
   commands:
     pre-build:
       - yum update -y
-      - yum install -y libxml2-devel libxslt-devel
+      - yum install -y gcc make
+      - wget http://xmlsoft.org/sources/libxml2-2.9.12.tar.gz
+      - tar xzvf libxml2-2.9.12.tar.gz
+      - cd libxml2-2.9.12 && ./configure --prefix=/usr && make && make install
+      - cd .. && rm -rf libxml2-2.9.12 libxml2-2.9.12.tar.gz
+      - yum install -y libxslt-devel
     build:
+      - gem install bundler:2.3.27
+      - bundle config set --local path 'vendor/bundle'
       - bundle config build.nokogiri --use-system-libraries
       - bundle install
 run:
   runtime-version: 3.1.6
-  command: bundle exec ruby app.rb
+  command: bundle exec puma -p 8080
   network:
     port: 8080
